@@ -1,5 +1,61 @@
 ![quiche](quiche.svg)
+const App = () => {
+  const [animationVariant, setAnimationVariant] = React.useState('fade-in')
 
+  const handleAnimationChange = (event) =>
+    setAnimationVariant(event.target.value)
+
+  return (
+    <AnimationProvider key={animationVariant}>
+      <Stack
+        direction="horizontal"
+        alignItems="center"
+        justifyContent="center"
+        style={{height: 200}}
+      >
+        <Image
+          animate={{
+            variant: animationVariant,
+          }}
+          src="https://via.placeholder.com/150x75/D0D7DE/D0D7DE.png"
+          alt="placeholder with gray background and no foreground text"
+        />
+        <Image
+          animate={{
+            variant: animationVariant,
+          }}
+          src="https://via.placeholder.com/150x75/D0D7DE/D0D7DE.png"
+          alt="placeholder with gray background and no foreground text"
+        />
+        <Image
+          animate={{
+            variant: animationVariant,
+          }}
+          src="https://via.placeholder.com/150x75/D0D7DE/D0D7DE.png"
+          alt="placeholder with gray background and no foreground text"
+        />
+      </Stack>
+
+      <Stack direction="horizontal" gap="spacious" justifyContent="center">
+        <FormControl>
+          <FormControl.Label>Animation</FormControl.Label>
+          <Select
+            defaultValue={animationVariant}
+            onChange={handleAnimationChange}
+          >
+            {AnimationVariants.map((option) => (
+              <Select.Option key={option} value={option}>
+                {option}
+              </Select.Option>
+            ))}
+          </Select>
+        </FormControl>
+      </Stack>
+    </AnimationProvider>
+  )
+}
+
+render(App)
 [![crates.io](https://img.shields.io/crates/v/quiche.svg)](https://crates.io/crates/quiche)
 [![docs.rs](https://docs.rs/quiche/badge.svg)](https://docs.rs/quiche)
 [![license](https://img.shields.io/github/license/cloudflare/quiche.svg)](https://opensource.org/licenses/BSD-2-Clause)
